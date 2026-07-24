@@ -29,7 +29,8 @@ public class OrderRepository : IOrderRepository
 
         var items = await query
             .OrderByDescending(o => o.CreatedAt)
-            .Skip(page * pageSize)
+            .ThenByDescending(o => o.Id)
+            .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 

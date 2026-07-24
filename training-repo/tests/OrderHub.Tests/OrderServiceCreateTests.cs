@@ -36,6 +36,23 @@ public class OrderServiceCreateTests
         Assert.Equal(380m, result.Value!.Items.Single().UnitPriceSnapshot);
     }
 
+    [Theory]
+    [InlineData(CustomerTier.Standard)]
+    [InlineData(CustomerTier.Silver)]
+    [InlineData(CustomerTier.Gold)]
+    public async Task CreateOrder_SnapshotsProductUnitPriceBeforeTierDiscount(CustomerTier tier)
+    {
+        using var db = TestSetup.CreateContext();
+        var service = TestSetup.CreateOrderService(db);
+        var customer = TestSetup.AddCustomer(db, tier);
+        var product = TestSetup.AddProduct(db, unitPrice: 1000m);
+
+        var result = await service.CreateOrderAsync(customer.Id, new[] { new NewOrderLine(product.Id, 1) });
+
+        Assert.True(result.Success);
+        Assert.Equal(1000m, result.Value!.Items.Single().UnitPriceSnapshot);
+    }
+
     [Fact]
     public async Task CreateOrder_DecrementsProductStock()
     {
