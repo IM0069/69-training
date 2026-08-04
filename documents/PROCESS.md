@@ -225,6 +225,22 @@ my only way to answer "which products have stock below 5" is to go dig through t
 > 訂單 205 剛才已經取消過了。要不要我先查一下目前狀態確認一下,還是你是指其他訂單?
 幫我取消訂單204
 > 訂單 204 目前狀態已經是 Cancelled(已取消),不需要也無法再次取消。要確認一下其他訂單編號嗎?
+
+練習 5 — MCP 不是只有 tools:Resources 與 Prompts
+Gold 會員買 1000 元商品應付多少?
+>  根據折扣規則,Gold 會員 9 折:
+  1000 × 0.9 = 900 元
+  
+想一想並記進 PROCESS.md:折扣規則用 Resource 給,和讓 agent 自己去讀 OrderService.cs,差在哪?
+> 差別在對代碼的了解，如果代碼規則很多 需要花很多時間去看。 Resources那邊可以直接一目瞭然
+agent 讀到的是「給人看的結論」,不用自己反推 C# 邏輯,也不會誤讀到不相關的實作細節
+
+prompt 範本放在 server,和每個人自己打一段話,差在哪?(提示:團隊共用、版本控制、規則改版時要改幾個地方)
+> 每個人自己打一段可能會獲取到不同的結果，prompt範本放在server可以確保全部result都是統一
+以一個團隊來説 Prompt放server只要改這一個檔案,所有人下次執行就自動套用新流程
+Resource如果有調整代碼后忘記修改Resource, 會導致讀取出outdated 規則
+可以提供方便，但是也有limitation. 如果有太多tool
+
 ## 附錄：值得留下的對話片段
 
 （貼 1–2 段最有代表性的 prompt 與回應**摘要**——不用貼全文，重點是「我怎麼問」和「它怎麼答」。）
