@@ -166,7 +166,46 @@ AI了解后提供了5個調整步驟， 後面分析后只執行了前兩項。 
 	- 有
 
 ### 第二階段 — MCP Server
-練習0 - AI 
+練習0 - AI 能夠自行控制頁面達到測試效果，并且能完成截圖
+
+已建立新訂單並截圖結果頁。
+訂單資訊：
+訂單：#213
+客戶：陳志明（金卡會員）
+商品：SKU-1002 極光 機械鍵盤
+數量：1
+小計：NT$ 2,320.00
+會員折扣 10%：-NT$ 232.00
+應付總額：NT$ 2,088.00
+截圖：[`order-213-details.png`](./order-213-details.png)
+
+練習1 - 建立 OrderHub MCP Server
+
+PS D:\AI Training\training-repo> dotnet build src/OrderHub.Mcp
+还原完成(1.7)
+  OrderHub.Core net8.0 已成功 (4.0 秒) → src\OrderHub.Core\bin\Debug\net8.0\OrderHub.Core.dll
+  OrderHub.Infrastructure net8.0 已成功 (1.5 秒) → src\OrderHub.Infrastructure\bin\Debug\net8.0\OrderHub.Infrastructure.dll
+  OrderHub.Mcp net10.0 已成功 (1.9 秒) → src\OrderHub.Mcp\bin\Debug\net10.0\OrderHub.Mcp.dll
+
+在 9.9 秒内生成 已成功
+
+新增的 MCP 工具有 3 個：
+GetOrder(id)
+用訂單 Id 查詢訂單詳細資料。
+回傳客戶、商品明細、單價快照、小計、會員折扣率、應付總額等 JSON。
+
+LowStock(threshold = 10)
+查詢低於庫存門檻、且仍在販售中的商品。
+依庫存量由低到高排序。
+預設門檻是 10。
+
+CustomerOrders(customerId)
+查詢指定客戶的全部訂單摘要。
+回傳訂單編號、建立時間、狀態、總額
+
+練習 2 — 用 MCP Inspector 除錯
+彈出一個MCP Inspector頁面， 可以從List Tools 中選擇工具來進行驗證數據。
+這個可以方便後續的測試和撈取數據進行驗證
 
 ## 附錄：值得留下的對話片段
 
