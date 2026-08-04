@@ -214,7 +214,17 @@ my only way to answer "which products have stock below 5" is to go dig through t
 
 恢復.mcp.json后，AI很快就把數據顯示出來了 》 Called orderhub 
 
+練習 4 — 會改資料的工具:cancel_order
+把新的MCP貼上后， 需要重新build 和 reconnect to OrderHub
 
+對 agent 說「幫我取消訂單 X」
+> 成功取消
+
+對同一筆訂單再取消一次
+幫我取消訂單205
+> 訂單 205 剛才已經取消過了。要不要我先查一下目前狀態確認一下,還是你是指其他訂單?
+幫我取消訂單204
+> 訂單 204 目前狀態已經是 Cancelled(已取消),不需要也無法再次取消。要確認一下其他訂單編號嗎?
 ## 附錄：值得留下的對話片段
 
 （貼 1–2 段最有代表性的 prompt 與回應**摘要**——不用貼全文，重點是「我怎麼問」和「它怎麼答」。）
