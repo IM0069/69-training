@@ -207,6 +207,14 @@ CustomerOrders(customerId)
 彈出一個MCP Inspector頁面， 可以從List Tools 中選擇工具來進行驗證數據。
 這個可以方便後續的測試和撈取數據進行驗證
 
+練習 3 — 註冊給 agent,做 before/after 對照
+在把.mcp.json更名后， claude無法讀取到工具而回復說沒有工具， 需要從代碼上去尋找 》 目前 orderhub 連線已中斷,無法重新查詢。請重新連接 orderhub 後,我再重新查詢一次。
+I don't have any orderhub MCP tools available in this conversation — this is the "no tools" side of your comparison
+my only way to answer "which products have stock below 5" is to go dig through the repo's data/code manually.
+
+恢復.mcp.json后，AI很快就把數據顯示出來了 》 Called orderhub 
+
+
 ## 附錄：值得留下的對話片段
 
 （貼 1–2 段最有代表性的 prompt 與回應**摘要**——不用貼全文，重點是「我怎麼問」和「它怎麼答」。）
